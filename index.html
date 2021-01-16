@@ -337,9 +337,10 @@
     <div class="row">
         <div class="col-md" style="border-right: solid 0.115em black;"><br>
             <h3>Input</h3><br><textarea id="input" name="" id="" col-mds="30" rows="10"></textarea>
+            <p>Click upload to generate code</p>
         </div>
         <div class="col-md" style="border-left: solid 0.115em black;"><br>
-            <h3>Output</h3><br><textarea id="output" name="" id="" col-mds="30" rows="10"></textarea>
+            <h3>Output</h3><br><textarea id="output" name="" id="" col-mds="30" rows="10" onclick="" readonly></textarea><p>Click textarea to copy output</p>
         </div>
     </div>
     <br>
@@ -449,9 +450,13 @@
             for (var i = 0; i < 9; i++) {
                 code.push(localStorage.getItem(i + 1));
             }
+            var string = `#include\"Keyboard.h\"\n#include<Mouse.h>\nint keys[]={19,20,21,4,5,6,7,8,9};bool active[]={${enabled}};bool toggleable[]={${toggle}};bool toggled[]={false,false,false,false,false,false,false,false,false};bool toggleonce[]={false,false,false,false,false,false,false,false,false};bool pressed[]={false,false,false,false,false,false,false,false,false};bool repeating[]={${repeating}};void setup(){Keyboard.begin();for(int i=0;i<9;i++){pinMode(keys[i],INPUT_PULLUP);}}void loop(){for(int i=0;i<9;i++){if(readButton(keys[i])){doAction(i);}if(!readButton(keys[i])){doCounterAction(i);}if(toggled[i]){button(keys[i]);delay(5);}}}boolean readButton(int pin){if(digitalRead(pin)==LOW){delay(5);if(digitalRead(pin)==LOW){return true;}}return false;}void doAction(int pin){if(active[pin]){if(toggleable[pin]){if(!toggleonce[pin]){toggled[pin]=!toggled[pin];toggleonce[pin]=true;}}else{if(!repeating[pin]){if(!pressed[pin]){button(keys[pin]);pressed[pin]=true;}}else{button(keys[pin]);}}pressed[pin]=true;}}void doCounterAction(int pin){if(active[pin]){pressed[pin]=false;toggleonce[pin]=false;}}void button(int b){switch(b){case 19:${code[0]}break;case 20:${code[1]}break;case 21:${code[2]}break;case 4:${code[3]}break;case 5:${code[4]}break;case 6:${code[5]}break;case 7:${code[6]}break;case 8:${code[7]}break;case 9:${code[8]}break;}}`;
             console.log(
-                `#include\"Keyboard.h\"\n#include<Mouse.h>\nint keys[]={19,20,21,4,5,6,7,8,9};bool active[]={${enabled}};bool toggleable[]={${toggle}};bool toggled[]={false,false,false,false,false,false,false,false,false};bool toggleonce[]={false,false,false,false,false,false,false,false,false};bool pressed[]={false,false,false,false,false,false,false,false,false};bool repeating[]={${repeating}};void setup(){Keyboard.begin();for(int i=0;i<9;i++){pinMode(keys[i],INPUT_PULLUP);}}void loop(){for(int i=0;i<9;i++){if(readButton(keys[i])){doAction(i);}if(!readButton(keys[i])){doCounterAction(i);}if(toggled[i]){button(keys[i]);delay(5);}}}boolean readButton(int pin){if(digitalRead(pin)==LOW){delay(5);if(digitalRead(pin)==LOW){return true;}}return false;}void doAction(int pin){if(active[pin]){if(toggleable[pin]){if(!toggleonce[pin]){toggled[pin]=!toggled[pin];toggleonce[pin]=true;}}else{if(!repeating[pin]){if(!pressed[pin]){button(keys[pin]);pressed[pin]=true;}}else{button(keys[pin]);}}pressed[pin]=true;}}void doCounterAction(int pin){if(active[pin]){pressed[pin]=false;toggleonce[pin]=false;}}void button(int b){switch(b){case 19:${code[0]}break;case 20:${code[1]}break;case 21:${code[2]}break;case 4:${code[3]}break;case 5:${code[4]}break;case 6:${code[5]}break;case 7:${code[6]}break;case 8:${code[7]}break;case 9:${code[8]}break;}}`
+                string
             );
+
+            $('#output').val(string);
+
         }
 
         function reset() {
@@ -532,6 +537,15 @@
             }
 
         }, 100);
+
+        $(document).ready(()=>{
+        $("#output").click(()=>{
+            $("#output").select();
+            document.execCommand("copy");
+            alert("Output coppied to clipboard");
+        });
+        });
+
     </script>
 </body>
 
