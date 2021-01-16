@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        async function selectPort() {
+            // Filter on devices with the Arduino Uno USB Vendor/Product IDs.
+            // const filters = [
+            // { usbVendorId: 0x2341, usbProductId: 0x0043 },
+            // { usbVendorId: 0x2341, usbProductId: 0x0001 }
+            // ];
+
+            // Prompt user to select an Arduino Uno device.
+            // Prompt user to select any serial port.
+            const port = await navigator.serial.requestPort();
+
+            // Wait for the serial port to open.
+            await port.open({ baudRate: 9600 });
+
+            const { usbProductId, usbVendorId } = port.getInfo();
+
+            const writer = port.writable.getWriter();
+
+            const data = new Uint8Array([0x50, 0x20]); // hello
+            await writer.write(data);
+
+            
+            
+        }
+    </script>
+
+</head>
+<body>
+    <button onclick="selectPort()">Select Port</button>
+</body>
+</html>
