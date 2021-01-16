@@ -407,6 +407,18 @@
     });
     }
 
+    function EnableAll(i) {
+        [repeatingElems, toggleElems, SingleElems, HoldElems].forEach((elem, index) => {
+            Enable(elem, i);
+        });
+    }
+
+    function DisableAll(i) {
+    [repeatingElems, toggleElems, SingleElems, HoldElems].forEach((elem, index) => {
+    Disable(elem, i);
+    });
+    }
+
     LoadConfig();
     Load(currentlyEditing);
 
@@ -427,6 +439,12 @@
             enabled.push(list3[i].parentElement.children[0].checked);
         }
 
+        EnabledElems.forEach((elem, index) => {
+        if (elem.checked) {
+        EnableAll(index+1);
+        } else DisableAll(index+1);
+        });
+        
         SingleElems.forEach((elem, index) => {
             if (elem.checked) {
                 Disable(toggleElems, index+1);
