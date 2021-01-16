@@ -1,0 +1,1 @@
+.col{text-align:center}textarea{width:90%;float:top;min-height:250px;overflow:scroll;margin:auto;display:inline-block;background:#f4f4f9;outline:0;font-family:Courier,sans-serif;font-size:14px}ol{counter-reset:list}ol>li{list-style:none}ol>li:before{content:counter(list) ") ";counter-increment:list}.wide-button{width:90%}
