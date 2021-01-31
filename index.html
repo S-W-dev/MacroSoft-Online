@@ -1,552 +1,91 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/styles.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="/lib/codemirror.css">
+    <script src="/mode/javascript/javascript.js"></script>
+
     <title>Mcro Editor</title>
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css?h=85e6cec02eb707989de0d5b5cea8d3a5">
-    <link rel="stylesheet" href="/assets/css/styles.min.css?h=e69289cd07ce1fd57d394a24ea1dd697">
 </head>
-
 <body>
-    <div class="row">
-        <div class="col-md">
-            <h1>Macro Editor</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>1</h3><button class="btn btn-primary" type="button" onclick="EditCode(1);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
+    <main>
+        <section class="glass">
+            <div class="dashboard">
+                <div class="logo">
+                    <img src="/images/256.png" class="logo-img" alt="Logo">
+                    <h3>MacroPad Editor</h3>
+                    <hr>
+                    <h2>Buttons</h2>
                 </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-2"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
+                <div id="buttons" class="buttons">
+                    <div id="1" class="button">
+                        <img src="/images/Key1.png" alt="">
+                        <h2>Button 1</h2>
                     </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
+                    <div id="2" class="button">
+                        <img src="/images/Key2.png" alt="">
+                        <h2>Button 2</h2>
+                    </div>
+                    <div id="3" class="button">
+                        <img src="/images/Key3.png" alt="">
+                        <h2>Button 3</h2>
+                    </div>
+                    <div id="4" class="button">
+                        <img src="/images/Key4.png" alt="">
+                        <h2>Button 4</h2>
+                    </div>
+                    <div id="5" class="button">
+                        <img src="/images/Key5.png" alt="">
+                        <h2>Button 5</h2>
+                    </div>
+                    <div id="6" class="button">
+                        <img src="/images/Key6.png" alt="">
+                        <h2>Button 6</h2>
+                    </div>
+                    <div id="7" class="button">
+                        <img src="/images/Key7.png" alt="">
+                        <h2>Button 7</h2>
+                    </div>
+                    <div id="8" class="button">
+                        <img src="/images/Key8.png" alt="">
+                        <h2>Button 8</h2>
+                    </div>
+                    <div id="9" class="button">
+                        <img src="/images/Key9.png" alt="">
+                        <h2>Button 9</h2>
+                    </div>
                 </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4"><label
-                                    class="form-check-label" for="formCheck-4">Toggle</label></div>
-                        </div>
+                <!-- <div class="buy">
+                    <h2>Preorder your MacroPad today!</h2>
+                    <img src="/images/MacroPad.png" alt="MacroPad">
+                </div> -->
+            </div>
+            <div class="editor-window">
+                <div class="title">
+                    <h1>Macro Editor</h1>
+                </div>
+                <div class="editor">
+                    <textarea name="editor" id="editor"></textarea>
+                </div>
+                <div class="settings">
+                    <div class="1">
+                        <h1>Button <num>1</num></h1>
                     </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-5"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
                 </div>
             </div>
-        </div>
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>2</h3><button class="btn btn-primary" type="button" onclick="EditCode(2);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-11"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-12"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-13"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-14"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-15"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
+            <div class="docs">
+                <h1>Docs</h1>
+                <input type="text" placeholder="Search"/>
             </div>
-        </div>
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>3</h3><button class="btn btn-primary" type="button" onclick="EditCode(3);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-6"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-7"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-8"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-9"><label
-                                    class="form-check-label" for="formCheck-4">Toggle</label></div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-10"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>4</h3><button class="btn btn-primary" type="button" onclick="EditCode(4);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-31"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-32"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-33"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-34"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-35"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>5</h3><button class="btn btn-primary" type="button" onclick="EditCode(5);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-36"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-37"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-38"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-39"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-40"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>6</h3><button class="btn btn-primary" type="button" onclick="EditCode(6);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-41"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-42"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-43"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-44"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-45"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>7</h3><button class="btn btn-primary" type="button" onclick="EditCode(7);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-16"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-17"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-18"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-19"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-20"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>8</h3><button class="btn btn-primary" type="button" onclick="EditCode(8);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-21"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-22"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-23"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-24"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-25"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md main-col">
-            <div class="row">
-                <div class="col-md" style="border-left: solid 0.115em black;">
-                    <h3>9</h3><button class="btn btn-primary" type="button" onclick="EditCode(9);">Edit Code</button>
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-26"><label
-                            class="form-check-label" for="formCheck-1">Enabled</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="row">
-                                <div class="col-md">
-                                    <div class="form-check"><input class="form-check-input" type="radio"
-                                            id="formCheck-27"><label class="form-check-label"
-                                            for="formCheck-2">Repeating</label></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-28"><label
-                            class="form-check-label" for="formCheck-3">Single Action</label></div>
-                </div>
-                <div class="col" style="border-right: solid 0.115em black;">
-                    <div class="row">
-                        <div class="col-md">
-                            <div class="form-check"><input class="form-check-input" type="radio"
-                                    id="formCheck-29"><label class="form-check-label" for="formCheck-4">Toggle</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-30"><label
-                            class="form-check-label" for="formCheck-5">Hold</label></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md" style="border-right: solid 0.115em black;"><br>
-            <h3>Input</h3><br><textarea id="input" name="" id="" col-mds="30" rows="10"></textarea>
-            <p>Click upload to generate code</p>
-        </div>
-        <div class="col-md" style="border-left: solid 0.115em black;"><br>
-            <h3>Output</h3><br><textarea id="output" name="" id="" col-mds="30" rows="10" onclick="" readonly></textarea><p>Click textarea to copy output</p>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-md"><button class="btn btn-primary wide-button" type="button"
-                onclick="callQueue.push(Upload);">Upload</button></div>
-    </div>
-    <br>
-    <div id="root"></div>
-    <script src="/assets/js/jquery.min.js?h=89312d34339dcd686309fe284b3f226f"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js?h=7c038681746a729e2fff9520a575e78c"></script>
-    <script type="application/javascript" src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
-    <script>
-        let callQueue = [];
-
-        let currentlyEditing = 1;
-        let input = document.getElementById("input");
-
-        var list = document.querySelectorAll('input[type="radio"]');
-        var list2 = document.querySelectorAll('.form-check-label');
-        var list3 = document.querySelectorAll('input[type="checkbox"]');
-
-        for (var i = 0; i < 36; i += 2) {
-            list[i].setAttribute("name", `${i}`);
-            list[i + 1].setAttribute("name", `${i}`);
-        }
-        for (var i = 0; i < list2.length; i++) {
-            list2[i].setAttribute("for", "");
-        }
-
-        let repeating = [];
-
-        let toggle = [];
-
-        let enabled = [];
-
-        let repeatingElems = [];
-        for (var i = 0; i < list.length; i += 4) {
-            repeatingElems.push(list[i]);
-        }
-
-        let toggleElems = [];
-        for (var i = 2; i < list.length; i += 4) {
-            toggleElems.push(list[i]);
-        }
-
-        let SingleElems = [];
-        for (var i = 1; i < list.length; i += 4) {
-            SingleElems.push(list[i]);
-        }
-
-        let HoldElems = [];
-        for (var i = 3; i < list.length; i += 4) {
-            HoldElems.push(list[i]);
-        }
-
-        let EnabledElems = [];
-        for (var i = 0; i < list3.length; i++) {
-            EnabledElems.push(list3[i]);
-        }
-
-        function EditCode(x) {
-            Save(currentlyEditing);
-            Load(x);
-            currentlyEditing = x;
-        }
-
-        function Save(x) {
-            localStorage.setItem(x, input.value);
-        }
-
-        function Load(x) {
-            input.value = localStorage.getItem(x);
-        }
-
-        function SaveConfig() {
-            localStorage.setItem('repeating', repeating);
-            localStorage.setItem('toggle', toggle);
-            localStorage.setItem('enabled', enabled);
-        }
-
-        function LoadConfig() {
-
-            if (localStorage.getItem('enabled') == null) {
-                localStorage.setItem('repeating', 'false,false,false,false,false,false,false,false,false');
-                localStorage.setItem('toggle', 'false,false,false,false,false,false,false,false,false');
-                localStorage.setItem('enabled', 'true,true,true,true,true,true,true,true,true');
-            }
-
-            var r = localStorage.getItem('repeating', 'false,false,false,false,false,false,false,false,false').split(
-                ",");
-            var t = localStorage.getItem('toggle', 'false,false,false,false,false,false,false,false,false').split(",");
-            var e = localStorage.getItem('enabled', 'true,true,true,true,true,true,true,true,true').split(",");
-
-            for (var i = 0; i < 9; i++) {
-                repeatingElems[i].checked = (r[i] == "true");
-                toggleElems[i].checked = (t[i] == "true");
-                SingleElems[i].checked = (r[i] == "false");
-                HoldElems[i].checked = (t[i] == "false");
-                EnabledElems[i].checked = (e[i] == "true");
-            }
-
-        }
-
-        function Upload() {
-            var code = [];
-            for (var i = 0; i < 9; i++) {
-                code.push(localStorage.getItem(i + 1));
-            }
-            var string = `#include\"Keyboard.h\"\n#include<Mouse.h>\nint keys[]={19,20,21,4,5,6,7,8,9};bool active[]={${enabled}};bool toggleable[]={${toggle}};bool toggled[]={false,false,false,false,false,false,false,false,false};bool toggleonce[]={false,false,false,false,false,false,false,false,false};bool pressed[]={false,false,false,false,false,false,false,false,false};bool repeating[]={${repeating}};void setup(){Keyboard.begin();for(int i=0;i<9;i++){pinMode(keys[i],INPUT_PULLUP);}}void loop(){for(int i=0;i<9;i++){if(readButton(keys[i])){doAction(i);}if(!readButton(keys[i])){doCounterAction(i);}if(toggled[i]){button(keys[i]);delay(5);}}}boolean readButton(int pin){if(digitalRead(pin)==LOW){delay(5);if(digitalRead(pin)==LOW){return true;}}return false;}void doAction(int pin){if(active[pin]){if(toggleable[pin]){if(!toggleonce[pin]){toggled[pin]=!toggled[pin];toggleonce[pin]=true;}}else{if(!repeating[pin]){if(!pressed[pin]){button(keys[pin]);pressed[pin]=true;}}else{button(keys[pin]);}}pressed[pin]=true;}}void doCounterAction(int pin){if(active[pin]){pressed[pin]=false;toggleonce[pin]=false;}}void button(int b){switch(b){case 19:${code[0]}break;case 20:${code[1]}break;case 21:${code[2]}break;case 4:${code[3]}break;case 5:${code[4]}break;case 6:${code[5]}break;case 7:${code[6]}break;case 8:${code[7]}break;case 9:${code[8]}break;}}`;
-            console.log(
-                string
-            );
-
-            $('#output').val(string);
-
-        }
-
-        function reset() {
-            localStorage.clear();
-            window.location.reload();
-        }
-
-        function Enable(elems, i) {
-            if (i == 1) elems[0].disabled = false;
-            else
-                elems.forEach((elem, index) => {
-                    if (index == (i - 1 || index)) elem.disabled = false;
-                });
-        }
-
-        function Disable(elems, i) {
-            if (i == 1) elems[0].disabled = true;
-            else
-                elems.forEach((elem, index) => {
-                    if (index == (i - 1 || index)) elem.disabled = true;
-                });
-        }
-
-        function EnableAll(i) {
-            [repeatingElems, toggleElems, SingleElems, HoldElems].forEach((elem, index) => {
-                Enable(elem, i);
-            });
-        }
-
-        function DisableAll(i) {
-            [repeatingElems, toggleElems, SingleElems, HoldElems].forEach((elem, index) => {
-                Disable(elem, i);
-            });
-        }
-
-        LoadConfig();
-        Load(currentlyEditing);
-
-        setInterval(() => {
-
-            repeating = [];
-            for (var i = 0; i < list.length; i += 4) {
-                repeating.push(document.querySelector(`input[name='${list[i].getAttribute('name')}']`).checked);
-            }
-
-            toggle = [];
-            for (var i = 2; i < list.length; i += 4) {
-                toggle.push(document.querySelector(`input[name='${list[i].getAttribute('name')}']`).checked);
-            }
-
-            enabled = [];
-            for (var i = 0; i < list3.length; i++) {
-                enabled.push(list3[i].parentElement.children[0].checked);
-            }
-
-            EnabledElems.forEach((elem, index) => {
-                if (elem.checked) {
-                    EnableAll(index + 1);
-                } else DisableAll(index + 1);
-            });
-
-            SingleElems.forEach((elem, index) => {
-                if (elem.checked) {
-                    Disable(toggleElems, index + 1);
-                    Disable(HoldElems, index + 1);
-                    HoldElems[index].checked = true;
-                } else {
-                    Enable(toggleElems, index + 1);
-                    Enable(HoldElems, index + 1);
-                }
-            });
-
-            Save(currentlyEditing);
-            SaveConfig();
-
-            for (var q = 0; q < callQueue.length; q++) {
-                callQueue.shift()();
-            }
-
-        }, 100);
-
-        $(document).ready(()=>{
-        $("#output").click(()=>{
-            $("#output").select();
-            document.execCommand("copy");
-            alert("Output coppied to clipboard");
-        });
-        });
-
-    </script>
+        </section>
+    </main>
+    <script src="main.js"></script>
 </body>
-
 </html>
