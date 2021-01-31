@@ -292,7 +292,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
   // Do not use this. Use the cTypes function below. This is global just to avoid
   // excessive calls when cTypes is being called multiple times during a parse.
   var basicCTypes = words("int long char short double float unsigned signed " +
-    "void bool");
+    "void bool Keyboard Mouse");
 
   // Do not use this. Use the objCTypes function below. This is global just to avoid
   // excessive calls when objCTypes is being called multiple times during a parse.
@@ -444,7 +444,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     blockKeywords: words(cBlockKeywords + " class try catch"),
     defKeywords: words(cDefKeywords + " class namespace"),
     typeFirstDefinitions: true,
-    atoms: words("true false NULL nullptr"),
+    atoms: words("true false NULL nullptr press release releaseAll print println write click move mpress mrelease"),
     dontIndentStatements: /^template$/,
     isIdentifierChar: /[\w\$_~\xa1-\uffff]/,
     isReservedIdentifier: cIsReservedIdentifier,

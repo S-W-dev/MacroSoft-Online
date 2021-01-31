@@ -3,18 +3,39 @@ let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     matchBrackets: true,
     mode: "text/x-c++src"
 });
-$(document).on('click','.button', (event)=>{
-    var target = event.target;
-    s = event.target;
-    if (event.target.toString().includes("Heading") || event.target.toString().includes("Image")) {
-        target = event.target.parentElement;
-    } 
-    SelectButton(target.id);
+
+$(document).keydown(function (event) {
+
+    //19 for Mac Command+S
+    if (!(String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey) && !(event.which == 19)) return true;
+
+    Save(currentButton);
+
+    event.preventDefault();
+    return false;
 });
 
-let currentButton = 1;
+$(document).keydown(function (event) {
 
-Load(currentButton);
+    //19 for Mac Command+S
+    if (!(String.fromCharCode(event.which).toLowerCase() == 'l' && event.ctrlKey) && !(event.which == 19)) return true;
+
+    LoadFromFile();
+
+    event.preventDefault();
+    return false;
+});
+
+Load(1);
+
+var reader = new FileReader()
+var currentButton = 1;
+var old_val = editor.getValue();
+var descriptions = {
+    "Default": "The default button works like a normal button. When you press it down it does the action a single time.",
+    "Toggle": "When toggled, this button type will repeat the action at a set interval until cancelled.",
+    "Hold": "The hold button repeats the action at a set interval while its held down."
+}
 
 function SelectButton(id) {
 
@@ -32,6 +53,7 @@ function Save(currentButton) {
         enabled: $("#Enabled").is(":checked"),
         mode: document.querySelector('input[name="mode"]:checked').id
     }));
+    old_val = editor.getValue();
 }
 
 function Load(id) {
@@ -39,22 +61,53 @@ function Load(id) {
 
     var obj = JSON.parse(localStorage.getItem(id) || '{"button":' + id + ',"code":"","enabled":true,"mode":"Default"}');
 
+    old_val = obj.code;
+
     editor.setValue(obj.code);
     $("#Enabled").prop('checked', obj.enabled);
     $("#" + obj.mode).click();
 }
 
-let descriptions = {
-    "Default": "The default button works like a normal button. When you press it down it does the action a single time.",
-    "Toggle": "When toggled, this button type will repeat the action at a set interval until cancelled.",
-    "Hold": "The hold button repeats the action at a set interval while its held down."
+function LoadFromFile() {
+    document.querySelector('#upload').value = null;
+    $('#upload').click();
 }
 
-function loop() {
+setInterval(()=>{
+    if (editor.getValue() != old_val) {
+        document.querySelector("#unsaved").style = "";
+    } else {
+        document.querySelector("#unsaved").style.display = "none";
+    }
+
+    if (document.querySelector('#upload').value != "") {
+        reader.readAsText(document.querySelector('#upload').files[0]);
+        document.querySelector('#upload').value = "";
+    }
+
+    if (reader.result != null) {
+        editor.setValue(reader.result);
+        reader = new FileReader();
+    }
+}, 100);
+
+$(document).on('click', '.button', (event) => {
+    var target = event.target;
+    s = event.target;
+    if (event.target.toString().includes("Heading") || event.target.toString().includes("Image")) {
+        target = event.target.parentElement;
+    }
+    SelectButton(target.id);
+});
+
+$(document).on('click', '#CG', () => {
+    location.href = "https://concretegames.net/"
+});
+
+
+$(document).on('change', '#Default', '#Toggle', '#Hold', () => {
     var checked = document.querySelector('input[name="mode"]:checked').id;
     document.querySelector('#desc').innerHTML = descriptions[checked];
 
     Save(currentButton);
-}
-
-setInterval(loop, 100);
+});

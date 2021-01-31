@@ -19,7 +19,7 @@
         <section class="glass">
             <div class="dashboard">
                 <div class="logo">
-                    <img src="/images/256.png" class="logo-img" alt="Logo">
+                    <img src="/images/CGLogo.png" class="logo-img" id="CG"alt="Logo">
                     <h3>MacroPad Editor</h3>
                     <hr>
                     <h2>Buttons</h2>
@@ -72,7 +72,16 @@
                     <h1>Macro Editor</h1>
                 </div>
                 <div class="editor">
+                    <div class="shortcuts">
+                        <p>
+                            Save - (Ctrl/Command)+S
+                        </p>
+                        <p>
+                            Load From File - (Ctrl/Command)+L
+                        </p>
+                    </div>
                     <textarea name="editor" id="editor"></textarea>
+                    <p style="display:none;" id="unsaved">Unsaved</p>
                 </div>
                 <div class="settings">
                     <div class="a1">
@@ -96,6 +105,9 @@
             </div>
         </section>
     </main>
+    <div style="display:none;" class="fileupload">
+        <input id="upload" type="file" />
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
