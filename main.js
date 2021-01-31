@@ -9,7 +9,7 @@ let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     scrollPastEnd: true,
     continueComments: true,
     foldGutter: true,
-    scrollBarStyle: "simple",
+    scrollbarStyle: "simple",
     keyMap: "sublime",
     gutter: [
         "CodeMirror-foldgutter"
@@ -26,13 +26,12 @@ let advanced_editor = CodeMirror.fromTextArea(document.getElementById('advanced'
     scrollPastEnd: true,
     continueComments: true,
     foldGutter: true,
-    scrollBarStyle: "simple",
+    scrollbarStyle: "simple",
     keyMap: "sublime",
     gutter: [
         "CodeMirror-foldgutter"
     ],
     readOnly: "nocursor",
-    inputStyle: 'contenteditable',
     firstLineNumber: 0
 });
 CodeMirror.commands.loadFile = () => {
