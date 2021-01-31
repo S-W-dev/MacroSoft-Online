@@ -55,6 +55,7 @@ main {
 }
 
 .logo-img {
+    cursor: pointer;
     width: 15vh;
     margin-top: 2rem;
     border-radius: 50%;
@@ -84,6 +85,7 @@ margin: 1rem/5rem 0rem;
 padding: 1rem 2rem;
 align-items: center;
 transition: 0.4s;
+cursor: pointer;
 }
 
 .button:hover {
@@ -110,7 +112,7 @@ transition: 0.4s;
 .settings {
     flex: 1;
     background: linear-gradient(to left top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 100%;
     box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.3);
     display: flex;
@@ -176,6 +178,7 @@ input::-webkit-input-placeholder {
 }
 
 .settings input {
+    cursor: pointer;
     margin-top: 0rem;
     margin-left: 1rem;
     margin-right: 5px;
@@ -220,4 +223,33 @@ iframe {
 .shortcuts p {
     flex: 1;
     padding-bottom: 5px;
+}
+
+.tab {
+    overflow: hidden;
+    display: flex;
+}
+
+.tab button {
+    background: linear-gradient(to left top, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 5px;
+    flex: 1;
+    margin: 5px;
+}
+
+.tab button:hover {
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.2);
+
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
 }

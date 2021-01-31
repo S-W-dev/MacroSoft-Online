@@ -1,32 +1,50 @@
 let editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
     lineNumbers: true,
     matchBrackets: true,
-    mode: "text/x-c++src"
+    mode: "text/x-c++src",
+    lineWrapping: true,
+    autocorrect: true,
+    spellcheck: true,
+    foldCode: true,
+    scrollPastEnd: true,
+    continueComments: true,
+    foldGutter: true,
+    scrollBarStyle: "simple",
+    keyMap: "sublime",
+    gutter: [
+        "CodeMirror-foldgutter"
+    ]
 });
-
-$(document).keydown(function (event) {
-
-    //19 for Mac Command+S
-    if (!(String.fromCharCode(event.which).toLowerCase() == 's' && event.ctrlKey) && !(event.which == 19)) return true;
-
-    Save(currentButton);
-
-    event.preventDefault();
-    return false;
+let advanced_editor = CodeMirror.fromTextArea(document.getElementById('advanced'), {
+    lineNumbers: true,
+    matchBrackets: true,
+    mode: "text/x-c++src",
+    lineWrapping: true,
+    autocorrect: true,
+    spellcheck: true,
+    foldCode: true,
+    scrollPastEnd: true,
+    continueComments: true,
+    foldGutter: true,
+    scrollBarStyle: "simple",
+    keyMap: "sublime",
+    gutter: [
+        "CodeMirror-foldgutter"
+    ],
+    readOnly: "nocursor",
+    inputStyle: 'contenteditable',
+    firstLineNumber: 0
 });
-
-$(document).keydown(function (event) {
-
-    //19 for Mac Command+S
-    if (!(String.fromCharCode(event.which).toLowerCase() == 'l' && event.ctrlKey) && !(event.which == 19)) return true;
-
+CodeMirror.commands.loadFile = () => {
     LoadFromFile();
+}
 
-    event.preventDefault();
-    return false;
-});
+CodeMirror.commands.save = () => {
+    Save(currentButton);
+}
 
 Load(1);
+setEditor(0);
 
 var reader = new FileReader()
 var currentButton = 1;
@@ -73,6 +91,15 @@ function LoadFromFile() {
     $('#upload').click();
 }
 
+function Compile(code) {
+    return "Compiled:\n"+code;
+}
+
+function setEditor(i) {
+    document.getElementsByClassName('editor')[i].style = "";
+    document.getElementsByClassName('editor')[(i>0)?0:1].style.display = "none";
+}
+
 setInterval(()=>{
     if (editor.getValue() != old_val) {
         document.querySelector("#unsaved").style = "";
@@ -89,6 +116,8 @@ setInterval(()=>{
         editor.setValue(reader.result);
         reader = new FileReader();
     }
+
+    advanced_editor.setValue(Compile(editor.getValue()));
 }, 100);
 
 $(document).on('click', '.button', (event) => {
@@ -105,7 +134,7 @@ $(document).on('click', '#CG', () => {
 });
 
 
-$(document).on('change', '#Default', '#Toggle', '#Hold', () => {
+$(document).on('change', ['#Default', '#Toggle', '#Hold'], () => {
     var checked = document.querySelector('input[name="mode"]:checked').id;
     document.querySelector('#desc').innerHTML = descriptions[checked];
 
