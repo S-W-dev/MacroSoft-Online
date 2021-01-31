@@ -10,7 +10,7 @@
 
     <script src="/lib/codemirror.js"></script>
     <link rel="stylesheet" href="/lib/codemirror.css">
-    <script src="/mode/javascript/javascript.js"></script>
+    <script src="/mode/clike/clike.js"></script>
 
     <title>Mcro Editor</title>
 </head>
@@ -77,14 +77,22 @@
                 <div class="settings">
                     <div class="a1">
                         <h1>Button <num>1</num></h1>
-                        <input type="checkbox" checked="true" name="Enabled"><label for="Enabled">Enabled</label>
+                        <input type="checkbox" name="Enabled" id="Enabled" checked><label for="Enabled">Enabled</label>
                     </div>
-                    <div class="a2"></div>
+                    <div class="desc">
+                        <p id="desc">The Default button works like a normal button. When you press it down, it does the action a single time regardless of you holding it down.</p>
+                    </div>
+                    <div class="a2">
+                        <div class="c1"><input type="radio" id="Default" name="mode" checked><label for="Default">Default</label></div>
+                        <div class="c2"><input type="radio" id="Toggle" name="mode"><label for="Toggle">Toggle</label></div>
+                        <div class="c3"><input type="radio" id="Hold" name="mode"><label for="Hold">Hold</label></div>
+                    </div>
                 </div>
             </div>
             <div class="docs">
                 <h1>Docs</h1>
                 <input type="text" placeholder="Search"/>
+                <iframe src="https://concretegames.net/macrosoft"></iframe>
             </div>
         </section>
     </main>
