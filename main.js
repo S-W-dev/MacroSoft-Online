@@ -34,6 +34,7 @@ let advanced_editor = CodeMirror.fromTextArea(document.getElementById('advanced'
     readOnly: "nocursor",
     firstLineNumber: 0
 });
+
 CodeMirror.commands.loadFile = () => {
     LoadFromFile();
 }
