@@ -140,3 +140,36 @@ $(document).on('change', ['#Default', '#Toggle', '#Hold'], () => {
 
     Save(currentButton);
 });
+
+function setColor({
+    color1 = "#000000",
+    color2 = "#000000"
+} = colorPresets.default) {
+    $$('main').style.backgroundImage = console.logAndReturn(`linear-gradient(315deg, ${color1} 0%, ${color2} 100%)`);
+}
+
+let colorPresets = {
+    default: {
+        color1: "#65dfc9",
+        color2: "#6cdbeb"
+    },
+    slowInternet: {
+        color2: "#b82e1f"
+    },
+    nightClub: {
+        color2: "#2D3436"
+    },
+    darkPink: {
+        color2: "#E84393"
+    }
+}
+
+// foreach (preset in colorPresets) {
+    
+// }
+
+function $$() {return document.querySelector(...arguments);}
+
+console.logAndReturn = (e) => {return console.log(e), e;}
+
+setColor();

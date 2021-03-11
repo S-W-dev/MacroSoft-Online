@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/992f70584c.js" crossorigin="anonymous"></script>
+
+    <!-- stylesheets -->
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/styles-large.css">
+    <link rel="stylesheet" href="/settings-popup.css">
 
+    <!-- fix this later -->
     <!-- <link rel="stylesheet" media="screen and (min-width: 1700px)" href="/styles-large.css"> -->
     <!-- <link rel="stylesheet" media="screen and (max-width: 1700px)" href="/styles-medium.css"> -->
     <!-- <link rel="stylesheet" media="screen and (max-width: 1300px)" href="/styles-small.css"> -->
+
+    <!-- codemirror stuff -->
 
     <link rel="stylesheet" href="/addon/dialog/dialog.css">
     <link rel="stylesheet" href="/addon/scroll/simplescrollbars.css">
     <link rel="stylesheet" href="/addon/fold/foldgutter.css">
     <link rel="stylesheet" href="/addon/search/matchesonscrollbar.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="/lib/codemirror.js"></script>
     <link rel="stylesheet" href="/lib/codemirror.css">
@@ -43,7 +66,11 @@
     <script src="/addon/comment/continuecomment.js"></script>
     <script src="/keymap/sublime.js"></script>
 
-    <title>Mcro Editor</title>
+    <!-- scripts -->
+    <script src="/main.js" defer></script>
+    <script src="/settings-popup.js" defer></script>
+
+    <title>MacroPad Editor</title>
 </head>
 <body>
     <main>
@@ -110,8 +137,9 @@
             <div class="editor-window">
                 <div class="title">
                     <h1>Macro Editor</h1>
+                    <i id="settings-cog" class="fas fa-cog fa-2x"></i>
                 </div>
-                <div style="" class="editor basic">
+                <div class="editor basic">
                     <div class="shortcuts">
                         <p>
                             Save = Ctrl(Cmd)-S
@@ -165,6 +193,28 @@
     <div style="display:none;" class="fileupload">
         <input id="upload" type="file" />
     </div>
-    <script src="main.js"></script>
+
+    <div id="settings" class="modal" style="display: none;">
+        <div class="modal-content animate">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById(`settings`).style.display=`none`" class="close"
+                    title="Close Modal">×</span>
+                <img src="images/CGLogo.png" alt="Logo" class="logoavatar">
+                <h3>Settings</h3>
+                <hr>
+            </div>
+
+            <div class="container">
+                <label for="theme"><b>Theme</b></label>
+                <select placeholder="Enter Username/E-mail" name="theme" id="theme">
+            </div>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <button type="button" onclick="document.getElementById(`loginform`).style.display=`none`"
+                    class="cancelbtn">Close</button>
+            </div>
+
+        </div>
+    </div>
 </body>
 </html>
