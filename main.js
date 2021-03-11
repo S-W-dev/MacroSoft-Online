@@ -100,11 +100,18 @@ function setEditor(i) {
     document.getElementsByClassName('editor')[(i>0)?0:1].style.display = "none";
 }
 
+$$a('.unsaved-icon').forEach(elem => {
+elem.style.display = "none";
+});
+
 setInterval(()=>{
+    console.log($$a('.unsaved-icon')[currentButton]);
     if (editor.getValue() != old_val) {
         document.querySelector("#unsaved").style = "";
+        $$a('.unsaved-icon')[currentButton-1].style = "";
     } else {
         document.querySelector("#unsaved").style.display = "none";
+        $$a('.unsaved-icon')[currentButton-1].style.display = "none";
     }
 
     if (document.querySelector('#upload').value != "") {
@@ -171,7 +178,7 @@ Object.keys(colorPresets).forEach(elem => {
 });
 
 function $$() {return document.querySelector(...arguments);}
-
+function $$a() {return document.querySelectorAll(...arguments);}
 console.logAndReturn = (e) => {return console.log(e), e;}
 
 setColor();
