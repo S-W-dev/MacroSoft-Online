@@ -95,6 +95,9 @@ cursor: pointer;
 
 .button h2 {
     padding: 0rem 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    flex: 1;
 }
 
 .editor-window {
