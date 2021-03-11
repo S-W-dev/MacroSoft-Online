@@ -1,9 +1,4 @@
 
-<?php
-
-require 'http://concretegames.net/header.php';
-
-?>
 
 <!DOCTYPE html5>
 <html lang="en">
