@@ -144,7 +144,7 @@ $(document).on('change', ['#Default', '#Toggle', '#Hold'], () => {
 function setColor({
     color1 = "#000000",
     color2 = "#000000"
-} = colorPresets.default) {
+} = colorPresets[localStorage["theme"] || "default"]) {
     $$('main').style.backgroundImage = console.logAndReturn(`linear-gradient(315deg, ${color1} 0%, ${color2} 100%)`);
 }
 
@@ -162,11 +162,13 @@ let colorPresets = {
     darkPink: {
         color2: "#E84393"
     }
-}
+};
 
-// foreach (preset in colorPresets) {
-    
-// }
+let themeBox = $$('#theme');
+
+Object.keys(colorPresets).forEach(elem => {
+    themeBox.add(new Option(elem))
+});
 
 function $$() {return document.querySelector(...arguments);}
 

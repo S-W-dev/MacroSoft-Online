@@ -8,8 +8,17 @@ window.onclick = function (event) {
     }
 }
 
+$("#theme").val(localStorage["theme"] || "default");
+
 function showSettings() {
     document.getElementById(`settings`).style.display = `block`;
 }
 
 $("#settings-cog").on('click', showSettings);
+
+// settings on change events
+
+$("#theme").on('change', ()=>{
+    localStorage["theme"] = $("#theme").val();
+    setColor(colorPresets[localStorage["theme"]]);
+});
