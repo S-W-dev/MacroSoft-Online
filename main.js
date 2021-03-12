@@ -194,3 +194,9 @@ function $$a() {return document.querySelectorAll(...arguments);}
 console.logAndReturn = (e) => {return console.log(e), e;}
 
 setColor();
+
+// $(".docs").resizeable({
+//     handles: 'n,w,s,e',
+//     minWidth: 200,
+//     maxWidth: 1000
+// })

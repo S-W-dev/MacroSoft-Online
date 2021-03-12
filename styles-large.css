@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
-*:not(header) {
+body:not(header) {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: black;
+}
+
+body:not(.nav-link) {
     font-family: 'Poppins',
     sans-serif;
-    color: black;
 }
 
 h1 {
@@ -140,6 +143,7 @@ position: relative;
 }
 
 .docs {
+    position: inherit;
     flex: 1;
     display: flex;
     flex-direction: column;

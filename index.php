@@ -180,9 +180,11 @@ require "../header.php";
             </div>
             <div class="docs">
                 <br><br>
-                <h1>Docs</h1>
+                <h1>Market</h1>
                 <input type="text" placeholder="Search"/>
-                <iframe src="https://concretegames.net/macrosoft"></iframe>
+                <?php
+                    require "market.php";
+                ?>
             </div>
         </section>
     </main>
@@ -191,7 +193,7 @@ require "../header.php";
     </div>
 
     <div id="settings" class="modal" style="display: none;">
-        <div class="modal-content animate">
+        <form class="modal-content animate">
             <div class="imgcontainer">
                 <span onclick="document.getElementById(`settings`).style.display=`none`" class="close"
                     title="Close Modal">×</span>
@@ -202,15 +204,27 @@ require "../header.php";
 
             <div class="container">
                 <label for="theme"><b>Theme</b></label>
-                <select placeholder="Enter Username/E-mail" name="theme" id="theme">
+                <select name="theme" id="theme"></select>
+                <br><br>
+                <label for="repeat_interval"><b>Repeat Interval</b></label>
+                <input type="number" name="repeat_interval" id="repeat_interval" min="1" max="1000" value="20"/>
+                <br><br>
+                <label for="advanced">Advanced Settings</label>
+                <details name="advanced">
+                    <label for="custom">Custom Code (#includes, classes)</label>
+                    <br>
+                    <textarea name="custom" id="custom" style="width:100%" rows="10"></textarea>
+                </details>
             </div>
 
-            <div class="container" style="background-color:#f1f1f1">
+            <div style="display: inline;" class="container" style="background-color:#f1f1f1">
+                <!-- <button style="width: auto;" type="button" onclick="document.getElementById(`loginform`).style.display=`none`"
+                    class="submitbtn">Save</button> -->
                 <button type="button" onclick="document.getElementById(`loginform`).style.display=`none`"
                     class="cancelbtn">Close</button>
             </div>
 
-        </div>
+                </form>
     </div>
 </body>
 </html>

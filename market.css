@@ -1,0 +1,18 @@
+.marketplace {
+width: 100%;
+}
+
+.menu1 {
+    width: 100%;
+}
+
+.market-item-single {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.market-item-single button {
+    width: 100%;
+    padding: 1rem;
+}
+
