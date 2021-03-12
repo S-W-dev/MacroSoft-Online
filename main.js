@@ -101,7 +101,7 @@ function setEditor(i) {
 }
 
 $$a('.unsaved-icon').forEach(elem => {
-elem.style.display = "none";
+elem.style.visibility = "hidden";
 });
 
 setInterval(()=>{
@@ -110,8 +110,8 @@ setInterval(()=>{
         document.querySelector("#unsaved").style = "";
         $$a('.unsaved-icon')[currentButton-1].style = "";
     } else {
-        document.querySelector("#unsaved").style.display = "none";
-        $$a('.unsaved-icon')[currentButton-1].style.display = "none";
+        document.querySelector("#unsaved").style.visibility = "hidden";
+        $$a('.unsaved-icon')[currentButton - 1].style.visibility = "hidden";
     }
 
     if (document.querySelector('#upload').value != "") {

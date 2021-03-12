@@ -1,5 +1,8 @@
+<?php
 
+require "../header.php";
 
+?>
 <!DOCTYPE html5>
 <html lang="en">
 <head>
@@ -8,20 +11,6 @@
 
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-    <!-- bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
-    </script>
 
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/992f70584c.js" crossorigin="anonymous"></script>
@@ -75,10 +64,11 @@
 
     <title>MacroPad Editor</title>
 </head>
-<body class="container-fluid">
+<body>
     <main>
         <section class="glass">
             <div class="dashboard">
+                <br>
                 <div class="logo">
                     <img src="images/CGLogo.png" class="logo-img" id="CG"alt="Logo">
                     <h3>MacroPad Editor</h3>
@@ -138,6 +128,7 @@
                 </div> -->
             </div>
             <div class="editor-window">
+                <br><br>
                 <div class="title">
                     <h1>Macro Editor</h1>
                     <i id="settings-cog" class="fas fa-cog fa-2x"></i>
@@ -166,11 +157,6 @@
                     <textarea name="advanced" id="advanced"></textarea>
                     <p style="display:none;" id="unsaved">Unsaved</p>
                 </div>
-                <div class="tab">
-                    <!-- <button class="tablinks" onclick="setEditor(0)">Drag & Drop</button> -->
-                    <button class="tablinks" onclick="setEditor(0)">Editor</button>
-                    <button class="tablinks" onclick="setEditor(1)">Compiled</button>
-                </div>
                 <div class="settings">
                     <div class="a1">
                         <h1>Button <num>1</num></h1>
@@ -185,8 +171,15 @@
                         <div class="c3"><input type="radio" id="Hold" name="mode"><label for="Hold">Hold</label></div>
                     </div>
                 </div>
+                <div class="tab">
+                    <!-- <button class="tablinks" onclick="setEditor(0)">Drag & Drop</button> -->
+                    <!-- <button class="tablinks" onclick="setEditor(0)">Editor</button>
+                    <button class="tablinks" onclick="setEditor(1)">Compiled</button> -->
+                    <button class="tabinks" onclick="download('test.mcro', JSON.stringify(saveAsMcroFile()))">Upload to Arduino</button>
+                </div>
             </div>
             <div class="docs">
+                <br><br>
                 <h1>Docs</h1>
                 <input type="text" placeholder="Search"/>
                 <iframe src="https://concretegames.net/macrosoft"></iframe>

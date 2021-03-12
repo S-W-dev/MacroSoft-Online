@@ -11,14 +11,20 @@ array of arrays
 */
 
 function saveAsMcroFile() {
+    
+    let version = 1;
 
-    let buttonDataArray = [];
+    let repeat_interval = parseInt(localStorage["repeat_interval"]) || 20;
+
+    let custom = localStorage["custom"] || "";
+
+    let button_data = [];
     for (var i = 1; i <= 9; i++) {
         var buttonData = JSON.parse(localStorage.getItem(i) || '{"button":' + i + ',"code":"","enabled":true,"mode":"Default"}');
-        buttonDataArray.push([Compile(buttonData.code), buttonData.enabled, buttonData.mode]);
+        button_data.push({code: Compile(buttonData.code), enabled: buttonData.enabled, type: buttonData.mode});
     }
 
-    return buttonDataArray;
+    return {version, repeat_interval, custom, button_data};
 
 }
 
