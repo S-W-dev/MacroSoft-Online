@@ -105,7 +105,7 @@ elem.style.display = "none";
 });
 
 setInterval(()=>{
-    console.log($$a('.unsaved-icon')[currentButton]);
+    //console.log($$a('.unsaved-icon')[currentButton]);
     if (editor.getValue() != old_val) {
         document.querySelector("#unsaved").style = "";
         $$a('.unsaved-icon')[currentButton-1].style = "";
@@ -156,18 +156,30 @@ function setColor({
 }
 
 let colorPresets = {
-    default: {
+    Default: {
         color1: "#65dfc9",
         color2: "#6cdbeb"
     },
-    slowInternet: {
+    RedBlack: {
         color2: "#b82e1f"
     },
-    nightClub: {
+    USA: {
+        color1: "#ffaaaa",
+        color2: "#aaaaff"
+    },
+    Light: {
+        color1: "#eee",
+        color2: "#fff"
+    },
+    Dark: {
         color2: "#2D3436"
     },
-    darkPink: {
+    "Dark Pink": {
         color2: "#E84393"
+    },
+    Christmas: {
+        color1: "#ff0000",
+        color2: "#00ff00"
     }
 };
 
