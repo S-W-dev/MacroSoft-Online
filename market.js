@@ -15,13 +15,13 @@ class Marketplace {
                     <div class="market-item">
                         <div class="market-item-content">
                             <img class="market-item-image" src="${elem.img}"/>
-                            <button type="button" id="download">Download</button>
+                            <div class="market-item-data">
+                                <h5 class="market-item-name"><b>${elem.name}</b></h5>
+                                <h6 class="market-item-author text-secondary">${elem.author}</h6>
+                                <p class="market-item-desc">${elem.desc}</p>
+                            </div>
                         </div>
-                        <div class="market-item-data">
-                            <h4><b>${elem.name}</b></h4>
-                            <h5>${elem.author}</h5>
-                            <p>${elem.desc}</p>
-                        </div>
+                        <button type="button" id="download">Download</button>
                     </div>
                 `
             ));
@@ -65,8 +65,8 @@ class Product {
 let market = new Marketplace();
 
 
-$(".market-item-single button").on('click', (e)=>{
+$(".market-item-single button").on('click', ()=>{
 
-    e.css({"display": "none"});
+    $("#menu1").css({"display": "none"});
 
 });

@@ -7,8 +7,6 @@ require "../includes/dbh.inc.php";
 
 $data = $conn->query("SELECT * FROM `macro_market`");
 
-
-
 ?>
 
 <script defer>
@@ -26,11 +24,11 @@ $data = $conn->query("SELECT * FROM `macro_market`");
 <div id="menu1">
 
     <div class="market-item-single">
-        <button onclick="market.displayProducts(market.showItemsWhere({type: 0}))">Macro File</button>
+        <button onclick="market.displayProducts(market.showItemsWhere({type: 0}));$$('#menu1').style.display = 'none';">Macro File</button>
     </div>
 
     <div class="market-item-single">
-        <button onclick="market.displayProducts(market.showItemsWhere({type: 1}))">Macro Key</button>
+        <button onclick="market.displayProducts(market.showItemsWhere({type: 1}));$$('#menu1').style.display = 'none';">Macro Key</button>
     </div>
 
 </div>
