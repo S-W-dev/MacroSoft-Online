@@ -1,6 +1,9 @@
 <?php
 
-require "../header.php";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require "../htdocs/header.php";
 
 ?>
 <!DOCTYPE html5>
@@ -192,15 +195,14 @@ require "../header.php";
                 <h1>Presets</h1>
                 <input type="text" placeholder="Search"/>
                 <?php
-                    require "market.php";
-                ?>
+require "market.php";
+?>
             </div>
         </section>
     </main>
     <div style="display:none;" class="fileupload">
         <input id="upload" type="file" />
     </div>
-
     <div id="settings" class="modal" style="display: none;">
         <form class="modal-content animate">
             <div class="imgcontainer">

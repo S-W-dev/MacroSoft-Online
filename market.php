@@ -3,7 +3,7 @@
 
 <?php
 
-require "../includes/dbh.inc.php";
+require "../htdocs/includes/dbh.inc.php";
 
 $data = $conn->query("SELECT * FROM `macro_market`");
 
