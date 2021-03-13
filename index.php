@@ -189,7 +189,7 @@ require "../header.php";
             </div>
             <div class="docs">
                 <br><br>
-                <h1>Market</h1>
+                <h1>Presets</h1>
                 <input type="text" placeholder="Search"/>
                 <?php
                     require "market.php";
@@ -223,7 +223,7 @@ require "../header.php";
                     <label for="debounce_time"><b>Debounce Time</b></label>
                 <input type="number" name="debounce_time" id="debounce_time" min="1" max="1000" value="20"/>
                 <br>
-                    <label for="custom">Custom Code (#includes, classes, etc)</label>
+                    <label for="custom">Custom Code (#includes, classes, etc.)</label>
                     <br>
                     <textarea name="custom" id="custom" style="width:100%" rows="10"></textarea>
                 </details>
@@ -232,7 +232,7 @@ require "../header.php";
             <div style="display: inline;" class="container" style="background-color:#f1f1f1">
                 <!-- <button style="width: auto;" type="button" onclick="document.getElementById(`loginform`).style.display=`none`"
                     class="submitbtn">Save</button> -->
-                <button type="button" onclick="document.getElementById(`loginform`).style.display=`none`"
+                <button type="button" onclick="document.getElementById(`settings`).style.display=`none`"
                     class="cancelbtn">Close</button>
             </div>
 

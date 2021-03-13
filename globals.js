@@ -81,18 +81,16 @@ console.logAndReturn = (e) => {
 }
 
 function LoadData(data) {
-    // editor.setValue(reader.result);
     data = JSON.parse(data);
-    localStorage["repeat_interval"] = data["repeat_interval"];
-    localStorage["custom"] = data["custom"];
+    Storage.set("repeat_interval", data["repeat_interval"]);
+    Storage.set("debounce_time", data["debounce_time"]);
+    Storage.set("custom", data["custom"]);
     if (data.button_data.length == 1) {
-        //mcro key
         editor.setValue(data.button_data[0].code);
         $("#Enabled").prop('checked', data.button_data[0].enabled);
-        $("#" + data.button_data[0].mode).prop('checked', true);
+        $("#" + data.button_data[0].type).prop('checked', true);
         Save(currentButton);
     } else {
-        //mcro file
         data.button_data.forEach((elem, index) => {
             localStorage.setItem(index+1, JSON.stringify({
                 button: index+1,
@@ -103,3 +101,32 @@ function LoadData(data) {
         });
     }
 }
+
+/*
+0 for local
+1 for public
+*/
+let StorageMode = 0;
+
+class Storage {
+
+    static set(key, val) {
+        if (StorageMode == 0) return localStorage[key] = val, undefined;
+        if (StorageMode == 1) return this.setPublic(key, val), undefined;
+    }
+
+    static get(key) {
+        if (StorageMode == 0) return localStorage[key];
+        if (StorageMode == 1) return this.getPublic(key);
+    }
+
+    static setPublic(key, val) {
+
+    }
+
+    static getPublic(key) {
+
+    }
+
+}
+

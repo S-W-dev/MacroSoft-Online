@@ -27,3 +27,7 @@ $("#theme").on('change', ()=>{
 $("#repeat_interval").on('change', () => {
     localStorage["repeat_interval"] = $("#repeat_interval").val();
 });
+
+$("#debounce_time").on('change', () => {
+    localStorage["debounce_time"] = $("#debounce_time").val();
+});

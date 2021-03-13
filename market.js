@@ -21,7 +21,7 @@ class Marketplace {
                                 <p class="market-item-desc">${elem.desc}</p>
                             </div>
                         </div>
-                        <button type="button" id="download">Download</button>
+                        <button type="button" id="download" onclick='LoadData(JSON.stringify(${JSON.stringify(elem.code)}))'>Download</button>
                     </div>
                 `
             ));

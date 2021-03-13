@@ -8,7 +8,8 @@ Object.keys(colorPresets).forEach(elem => {
 
 Load(1);
 advanced_editor.setValue(localStorage["custom"] || "");
-$$("#repeat_interval").value = parseInt(localStorage["repeat_interval"]) || 20;
+$$("#repeat_interval").value = parseInt(localStorage["repeat_interval"]) || 100;
+$$("#debounce_time").value = parseInt(localStorage["debounce_time"]) || 20;
 var checked = document.querySelector('input[name="mode"]:checked').id;
 document.querySelector('#desc').innerHTML = descriptions[checked];
 

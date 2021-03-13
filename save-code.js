@@ -14,9 +14,11 @@ function saveAsMcroFile() {
     
     let version = 1;
 
-    let repeat_interval = parseInt(localStorage["repeat_interval"]) || 20;
+    let repeat_interval = parseInt(localStorage["repeat_interval"]) || 100;
+    if (repeat_interval < 1 || repeat_interval > 1000) repeat_interval = 100;
 
-    if (repeat_interval < 1 || repeat_interval > 1000) repeat_interval = 20;
+    let debounce_time = parseInt(localStorage["debounce_time"]) || 20;
+    if (debounce_time < 1 || debounce_time > 1000) debounce_time = 20;
 
     let custom = localStorage["custom"] || "";
 
@@ -26,7 +28,7 @@ function saveAsMcroFile() {
         button_data.push({code: Compile(buttonData.code), enabled: buttonData.enabled, type: buttonData.mode});
     }
 
-    return {version, repeat_interval, custom, button_data};
+    return {version, repeat_interval, debounce_time, custom, button_data};
 
 }
 
