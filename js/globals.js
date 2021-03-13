@@ -47,15 +47,6 @@ function LoadFromFile() {
     $('#upload').click();
 }
 
-function Compile(code) {
-    return "Compiled:\n" + code;
-}
-
-function setEditor(i) {
-    document.getElementsByClassName('editor')[i].style = "";
-    document.getElementsByClassName('editor')[(i > 0) ? 0 : 1].style.display = "none";
-}
-
 function setColor({
     color1 = "#000000",
     color2 = "#000000"

@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="market.css">
-<script src="market.js"></script>
+<link rel="stylesheet" href="css/market.css">
+<script src="js/market.js"></script>
 
 <?php
 

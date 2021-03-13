@@ -35,6 +35,8 @@ setInterval(()=>{
     }
 
     advanced_editor.refresh();
+    editor.refresh();
 }, 100);
 
 setColor();
+setEditor();

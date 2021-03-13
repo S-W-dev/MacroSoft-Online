@@ -19,9 +19,9 @@ require "../htdocs/header.php";
     <script src="https://kit.fontawesome.com/992f70584c.js" crossorigin="anonymous"></script>
 
     <!-- stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="styles-large.css">
-    <link rel="stylesheet" href="settings-popup.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles-large.css">
+    <link rel="stylesheet" href="css/settings-popup.css">
 
     <!-- fix this later -->
     <!-- <link rel="stylesheet" media="screen and (min-width: 1700px)" href="/styles-large.css"> -->
@@ -62,17 +62,20 @@ require "../htdocs/header.php";
 
     <!-- scripts -->
 
-    <script src="codemirror-editors.js" defer></script>
+    <script src="js/codemirror-editors.js" defer></script>
 
-    <script src="globals.js" defer></script>
+    <script src="js/globals.js" defer></script>
 
-    <script src="themes.js" defer></script>
+    <script src="js/themes.js" defer></script>
 
-    <script src="main.js" defer></script>
-    <script src="settings-popup.js" defer></script>
-    <script src="save-code.js" defer></script>
+    <script src="js/compiler.js"></script>
 
-    <script src="handlers.js" defer></script>
+    <script src="js/layout.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/settings-popup.js" defer></script>
+    <script src="js/save-code.js" defer></script>
+
+    <script src="js/handlers.js" defer></script>
 
     <title>MacroPad Editor</title>
 </head>
@@ -91,47 +94,47 @@ require "../htdocs/header.php";
                     <div id="1" class="button">
                         <img src="images/Key1.png" alt="">
                         <h2>Button 1</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="2" class="button">
                         <img src="images/Key2.png" alt="">
                         <h2>Button 2</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="3" class="button">
                         <img src="images/Key3.png" alt="">
                         <h2>Button 3</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="4" class="button">
                         <img src="images/Key4.png" alt="">
                         <h2>Button 4</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="5" class="button">
                         <img src="images/Key5.png" alt="">
                         <h2>Button 5</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="6" class="button">
                         <img src="images/Key6.png" alt="">
                         <h2>Button 6</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="7" class="button">
                         <img src="images/Key7.png" alt="">
                         <h2>Button 7</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="8" class="button">
                         <img src="images/Key8.png" alt="">
                         <h2>Button 8</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                     <div id="9" class="button">
                         <img src="images/Key9.png" alt="">
                         <h2>Button 9</h2>
-                        <img src="asterick.png" class="unsaved-icon" alt="asterick">
+                        <img src="images/asterick.png" class="unsaved-icon" alt="images/asterick">
                     </div>
                 </div>
                 <!-- <div class="buy">
@@ -145,19 +148,10 @@ require "../htdocs/header.php";
                     <h1>Macro Editor</h1>
                     <i id="settings-cog" class="fas fa-cog fa-2x"></i>
                 </div>
-                <div class="editor basic">
-                    <div class="shortcuts">
-                        <p>
-                            Save = Ctrl(Cmd)-S
-                        </p>
-                        <p>
-                            Load = Ctrl(Cmd)-Shift-L
-                        </p>
-                    </div>
-                    <textarea name="editor" id="editor"></textarea>
-                    <p style="display:none;" id="unsaved">Unsaved</p>
+                <div style="display:none;" class="editor market">
+
                 </div>
-                <div style="" class="editor advanced">
+                <div style="display:none;" class="editor basic">
                     <div class="shortcuts">
                         <p>
                             Save = Ctrl(Cmd)-S
@@ -167,6 +161,18 @@ require "../htdocs/header.php";
                         </p>
                     </div>
                     <!-- <textarea name="advanced" id="advanced"></textarea> -->
+                    <p style="display:none;" id="unsaved">Unsaved</p>
+                </div>
+                <div style="display:none;" class="editor advanced">
+                    <div class="shortcuts">
+                        <p>
+                            Save = Ctrl(Cmd)-S
+                        </p>
+                        <p>
+                            Load = Ctrl(Cmd)-Shift-L
+                        </p>
+                    </div>
+                    <textarea name="editor" id="editor"></textarea>
                     <p style="display:none;" id="unsaved">Unsaved</p>
                 </div>
                 <div class="settings">
@@ -195,7 +201,7 @@ require "../htdocs/header.php";
                 <h1>Presets</h1>
                 <input type="text" placeholder="Search"/>
                 <?php
-require "market.php";
+require "php/market.php";
 ?>
             </div>
         </section>
@@ -216,6 +222,10 @@ require "market.php";
             <div class="container">
                 <label for="theme"><b>Theme</b></label>
                 <select name="theme" id="theme"></select>
+                <br><br>
+                <label for="editormode"><b>Editor Mode</b></label>
+                <select name="editormode" id="editormode">
+                </select>
                 <br><br>
                 <label for="repeat_interval"><b>Repeat Interval</b></label>
                 <input type="number" name="repeat_interval" id="repeat_interval" min="1" max="1000" value="100"/>
