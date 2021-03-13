@@ -58,6 +58,13 @@ require "../header.php";
     <script src="keymap/sublime.js"></script>
 
     <!-- scripts -->
+
+    <script src="codemirror-editors.js" defer></script>
+
+    <script src="globals.js" defer></script>
+
+    <script src="themes.js" defer></script>
+
     <script src="main.js" defer></script>
     <script src="settings-popup.js" defer></script>
     <script src="save-code.js" defer></script>
@@ -156,7 +163,7 @@ require "../header.php";
                             Load = Ctrl(Cmd)-Shift-L
                         </p>
                     </div>
-                    <textarea name="advanced" id="advanced"></textarea>
+                    <!-- <textarea name="advanced" id="advanced"></textarea> -->
                     <p style="display:none;" id="unsaved">Unsaved</p>
                 </div>
                 <div class="settings">
@@ -209,11 +216,14 @@ require "../header.php";
                 <select name="theme" id="theme"></select>
                 <br><br>
                 <label for="repeat_interval"><b>Repeat Interval</b></label>
-                <input type="number" name="repeat_interval" id="repeat_interval" min="1" max="1000" value="20"/>
+                <input type="number" name="repeat_interval" id="repeat_interval" min="1" max="1000" value="100"/>
                 <br><br>
                 <label for="advanced">Advanced Settings</label>
                 <details name="advanced">
-                    <label for="custom">Custom Code (#includes, classes)</label>
+                    <label for="debounce_time"><b>Debounce Time</b></label>
+                <input type="number" name="debounce_time" id="debounce_time" min="1" max="1000" value="20"/>
+                <br>
+                    <label for="custom">Custom Code (#includes, classes, etc)</label>
                     <br>
                     <textarea name="custom" id="custom" style="width:100%" rows="10"></textarea>
                 </details>

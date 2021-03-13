@@ -12,6 +12,7 @@ $("#theme").val(localStorage["theme"] || "default");
 
 function showSettings() {
     document.getElementById(`settings`).style.display = `block`;
+    $$("#repeat_interval").value = parseInt(localStorage["repeat_interval"]) || 20;
 }
 
 $("#settings-cog").on('click', showSettings);
@@ -21,4 +22,8 @@ $("#settings-cog").on('click', showSettings);
 $("#theme").on('change', ()=>{
     localStorage["theme"] = $("#theme").val();
     setColor(colorPresets[localStorage["theme"]]);
+});
+
+$("#repeat_interval").on('change', () => {
+    localStorage["repeat_interval"] = $("#repeat_interval").val();
 });

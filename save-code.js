@@ -16,6 +16,8 @@ function saveAsMcroFile() {
 
     let repeat_interval = parseInt(localStorage["repeat_interval"]) || 20;
 
+    if (repeat_interval < 1 || repeat_interval > 1000) repeat_interval = 20;
+
     let custom = localStorage["custom"] || "";
 
     let button_data = [];
@@ -39,4 +41,6 @@ function download(filename, text) {
     element.click();
 
     document.body.removeChild(element);
+
+    alert("Ensure that you have installed the MacroPad Software, and then launch the downloaded file to update your MacroPad!");
 }
