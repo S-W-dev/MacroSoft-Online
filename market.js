@@ -64,9 +64,19 @@ class Product {
 
 let market = new Marketplace();
 
+function createMacroFile(keys) {
 
-$(".market-item-single button").on('click', ()=>{
 
-    $("#menu1").css({"display": "none"});
 
-});
+}
+
+function createMacroKey() {
+
+
+
+}
+
+function hideAll() {
+    $$a('.menu').forEach(elem => elem.style.display = "none");
+    $$a('.market-item').forEach(elem => elem.remove());
+}

@@ -62,6 +62,8 @@ require "../header.php";
     <script src="settings-popup.js" defer></script>
     <script src="save-code.js" defer></script>
 
+    <script src="handlers.js" defer></script>
+
     <title>MacroPad Editor</title>
 </head>
 <body>

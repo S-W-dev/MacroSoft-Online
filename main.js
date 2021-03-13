@@ -127,27 +127,6 @@ setInterval(()=>{
     advanced_editor.setValue(Compile(editor.getValue()));
 }, 100);
 
-$(document).on('click', '.button', (event) => {
-    var target = event.target;
-    s = event.target;
-    if (event.target.toString().includes("Heading") || event.target.toString().includes("Image")) {
-        target = event.target.parentElement;
-    }
-    SelectButton(target.id);
-});
-
-$(document).on('click', '#CG', () => {
-    location.href = "https://concretegames.net/"
-});
-
-
-$(document).on('change', ['#Default', '#Toggle', '#Hold'], () => {
-    var checked = document.querySelector('input[name="mode"]:checked').id;
-    document.querySelector('#desc').innerHTML = descriptions[checked];
-
-    Save(currentButton);
-});
-
 function setColor({
     color1 = "#000000",
     color2 = "#000000"
@@ -190,7 +169,13 @@ Object.keys(colorPresets).forEach(elem => {
 });
 
 function $$() {return document.querySelector(...arguments);}
-function $$a() {return document.querySelectorAll(...arguments);}
+function $$a() {if (Array.isArray(arguments[0])) {
+    var x = [];
+    arguments[0].forEach(elem => x = [...x, ...$$a(elem)])
+    return x;
+} else {
+    return document.querySelectorAll(...arguments);
+}}
 console.logAndReturn = (e) => {return console.log(e), e;}
 
 setColor();
