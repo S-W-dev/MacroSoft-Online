@@ -3,11 +3,36 @@
 }
 
 header {
-    position: absolute;
+    /* position: absolute; */
     z-index: 999;
     width: 100%;
 }
 
 a {
     cursor: pointer;
+}
+
+.gutter.gutter-horizontal {
+    background-color: rgba(122, 122, 122, 0.8);
+    cursor: col-resize;
+    width: 3rem;
+    padding: 2px;
+    margin-right: 0.5rem;
+    z-index: 99999;
+}
+
+.docs {
+    z-index: 999999;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge add Firefox */
+.scrollbar-hidden {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* Firefox */
 }

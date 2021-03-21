@@ -1,5 +1,8 @@
 .marketplace {
 width: 100%;
+height: 100%;
+overflow: hidden;
+flex: 1;
 }
 
 .menu1 {
@@ -18,6 +21,10 @@ width: 100%;
 
 .market-item-single button:hover {
     background-color: #dadada;
+}
+
+#markettab {
+    height: 100%;
 }
 
 .market-item {
@@ -74,7 +81,14 @@ width: 100%;
 #MainMenuButton {
     width: 100%;
     height: 5vh;
-    position: absolute;
-    bottom: 0;
-    right: 0;
+}
+
+.marketplace {
+    overflow-y:scroll;
+    min-height: 100%;
+    max-height: 100%;
+}
+
+body {
+    /* overflow: hidden; */
 }

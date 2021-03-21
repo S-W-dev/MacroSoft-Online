@@ -12,8 +12,13 @@ $$("#repeat_interval").value = parseInt(localStorage["repeat_interval"]) || 100;
 $$("#debounce_time").value = parseInt(localStorage["debounce_time"]) || 20;
 var checked = document.querySelector('input[name="mode"]:checked').id;
 document.querySelector('#desc').innerHTML = descriptions[checked];
-
+$$(".gutter.gutter-horizontal").setAttribute('style', '');
+// $$a(".marketplace").forEach(elem => {
+//     elem.style.height = $(elem.parentElement).height()
+// });
 setInterval(()=>{
+        $("main").css({height: ($('body').height() - $('header').height()) + 'px'});
+
     localStorage["custom"] = advanced_editor.getValue();
 
     if (editor.getValue() != old_val) {
@@ -36,6 +41,7 @@ setInterval(()=>{
 
     advanced_editor.refresh();
     editor.refresh();
+
 }, 100);
 
 setColor();

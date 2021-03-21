@@ -15,6 +15,9 @@ require "../htdocs/header.php";
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <!-- splitjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/split.js/1.3.5/split.min.js"></script>
+
     <!-- font awesome -->
     <script src="https://kit.fontawesome.com/992f70584c.js" crossorigin="anonymous"></script>
 
@@ -60,6 +63,15 @@ require "../htdocs/header.php";
     <script src="addon/comment/continuecomment.js"></script>
     <script src="keymap/sublime.js"></script>
 
+    <!-- blockly -->
+    <link rel="stylesheet" href="blockly/blockly.css">
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="blockly/blockly.js" defer></script>
+
+    <!-- market -->
+    <link rel="stylesheet" href="css/market.css">
+    <script src="js/market.js"></script>
+
     <!-- scripts -->
 
     <script src="js/codemirror-editors.js" defer></script>
@@ -80,17 +92,16 @@ require "../htdocs/header.php";
     <title>MacroPad Editor</title>
 </head>
 <body>
-    <main>
+    <main class="">
         <section class="glass">
-            <div class="dashboard">
-                <br>
+            <div id="" class="dashboard">
                 <div class="logo">
                     <img src="images/CGLogo.png" class="logo-img" id="CG"alt="Logo">
                     <h3>MacroPad Editor</h3>
                     <hr>
                     <h2>Buttons</h2>
                 </div>
-                <div id="buttons" class="buttons">
+                <div id="buttons" class="buttons scrollbar-hidden">
                     <div id="1" class="button">
                         <img src="images/Key1.png" alt="">
                         <h2>Button 1</h2>
@@ -142,25 +153,19 @@ require "../htdocs/header.php";
                     <img src="images/MacroPad.png" alt="MacroPad">
                 </div> -->
             </div>
-            <div class="editor-window">
-                <br><br>
+            <div id="one" class="editor-window scrollbar-hidden">
                 <div class="title">
                     <h1>Macro Editor</h1>
                     <i id="settings-cog" class="fas fa-cog fa-2x"></i>
                 </div>
                 <div style="display:none;" class="editor market">
-
+                    <?php
+                        require "php/market.php";
+                    ?>
                 </div>
                 <div style="display:none;" class="editor basic">
-                    <div class="shortcuts">
-                        <p>
-                            Save = Ctrl(Cmd)-S
-                        </p>
-                        <p>
-                            Load = Ctrl(Cmd)-Shift-L
-                        </p>
+                    <div style="position: relative;width: 100%;height: 53vh;" id="blocklyArea">
                     </div>
-                    <!-- <textarea name="advanced" id="advanced"></textarea> -->
                     <p style="display:none;" id="unsaved">Unsaved</p>
                 </div>
                 <div style="display:none;" class="editor advanced">
@@ -196,13 +201,14 @@ require "../htdocs/header.php";
                     <button class="tabinks" onclick="download('test.mcro', JSON.stringify(saveAsMcroFile()))">Upload to Arduino</button>
                 </div>
             </div>
-            <div class="docs">
-                <br><br>
-                <h1>Presets</h1>
-                <input type="text" placeholder="Search"/>
-                <?php
-require "php/market.php";
-?>
+            <div id="two" class="docs">
+                <div id="markettab">
+                    <h1>Presets</h1>
+                    <input type="text" placeholder="Search"/>
+                    <?php
+                        require "php/market.php";
+                    ?>
+                </div>
             </div>
         </section>
     </main>
@@ -250,5 +256,12 @@ require "php/market.php";
 
                 </form>
     </div>
+
+    <div class="blocklystuff">
+        <?php
+                            require "blockly/blockly.php";
+                        ?>
+    </div>
+
 </body>
 </html>

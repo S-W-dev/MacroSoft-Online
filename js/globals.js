@@ -20,10 +20,11 @@ function SelectButton(id) {
     Load(currentButton);
 }
 
-function Save(currentButton) {
+function Save(currentButton=currentButton) {
     localStorage.setItem(currentButton, JSON.stringify({
         button: currentButton,
         code: editor.getValue(),
+        xml: Blockly.xml.domToText(Blockly.Xml.workspaceToDom(workspace)),
         enabled: $("#Enabled").is(":checked"),
         mode: document.querySelector('input[name="mode"]:checked').id
     }));
@@ -33,9 +34,11 @@ function Save(currentButton) {
 function Load(id) {
     document.querySelector('num').innerHTML = id;
 
-    var obj = JSON.parse(localStorage.getItem(id) || '{"button":' + id + ',"code":"","enabled":true,"mode":"Default"}');
+    var obj = JSON.parse(localStorage.getItem(id) || '{"button":' + id + ',"code":"","xml":"<xml xmlns="https://developers.google.com/blockly/xml"></xml>","enabled":true,"mode":"Default"}');
 
-    old_val = obj.code;
+    old_val = localStorage["editormode"] == "1" ? obj.xml : obj.code;
+
+    Blockly.Xml.domToWorkspace(obj.xml, workspace);
 
     editor.setValue(obj.code);
     $("#Enabled").prop('checked', obj.enabled);

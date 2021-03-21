@@ -20,6 +20,6 @@ $(document).on('change', ['#Default', '#Toggle', '#Hold'], () => {
 });
 
 $("#openMyStuff").on('click', () => {
-    $$("#menu1").style.display = "none";
-    $$("#myStuff").style.display = "block";
+    $$a('#menu1').forEach(elem => elem.style.display = 'none');
+    $$a('#myStuff').forEach(elem => elem.style.display = 'block');
 });
